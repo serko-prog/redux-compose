@@ -1,23 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import "./App.css";
+import LoginContainer from "./components/Login/LoginContainer";
+import SignUpContainer from "./components/SignUp/SignUpContainer";
+import reducer from "./store/reducer"
+
+const store = createStore(reducer)
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Combine reducers
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Provider store={store}>
+          <LoginContainer/>
+          <SignUpContainer/>
+        </Provider>
       </header>
     </div>
   );
